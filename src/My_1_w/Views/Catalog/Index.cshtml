@@ -1,0 +1,37 @@
+﻿@model My_1_w.Models.CatalogIndexViewModel
+
+@{
+    ViewData["Title"] = "Catalog2";
+}
+
+<section>
+    <div>
+        <form method="get">
+         <label data-title="brand">
+             <select asp-for="@Model.BrandFilterApplied" asp-items="@Model.Brands"></select>
+         </label>
+            <label data-title="type">
+                <select asp-for="@Model.TypesFilterApplied" asp-items="@Model.Types"></select>
+            </label>
+            <input type="submit" value="Apply Filters"/>
+        </form>
+    </div>
+</section>
+<div class="container">
+    @if (Model.CatalogItems.Any())
+    {
+        <div class="row">
+         @foreach(var catalogItem in Model.CatalogItems)
+         {
+             <img src=" @catalogItem.PictureUrl"/>
+             <div>
+                 <span>@catalogItem.Name</span>
+             </div>
+             <div>
+                 <span>@catalogItem.Price</span>
+             </div>
+         }
+        </div>
+    }
+
+</div>   
